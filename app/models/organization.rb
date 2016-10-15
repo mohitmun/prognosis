@@ -3,17 +3,17 @@ class Organization < ActiveRecord::Base
   def verification_tasks
     VerificationTask.where("mapped_organization_id = #{id} OR mapped_institute_id = #{id}")
   end
-# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Ability to work independently",
+# DONE "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Ability to work independently",
 
-# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Commitment",
+# DONE "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Commitment",
 
-# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Attitude",
+# FUCK OFF "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Attitude",
 
-# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Commitment to a goal",
+# FUCK OFF "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Commitment to a goal",
 
-# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Decision making",
+# DONE "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Decision making",
 
-# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Team-work",
+# DONE "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Team-work",
 
 # "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Respect and Humility",
 
@@ -46,6 +46,51 @@ class Organization < ActiveRecord::Base
 # "Rate the candidate on a scale of 1 to 5 on: Integrity (1 being the lowest and 5 being the highest)",
   def cap_to_work_indep
     a = "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Capability to work independently"
+    qids = Question.where(content: a).select(:id)
+    profile_ids = verification_tasks.select(:profile_id)
+    res_ids = VerificationTask.where(block_type: "Reference", profile_id: profile_ids).select(:survey_response_id)
+    answers = Answer.where(survey_response_id: res_ids, question_id: qids).pluck(:details)
+    {
+      "1" => answers.select{|s| s.include?('1')}.count,
+      "2" => answers.select{|s| s.include?('2')}.count,
+      "3" => answers.select{|s| s.include?('3')}.count,
+      "4" => answers.select{|s| s.include?('4')}.count,
+      "5" => answers.select{|s| s.include?('5')}.count,
+    }
+  end
+
+  def candidate_commitment
+    a = "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Commitment"
+    qids = Question.where(content: a).select(:id)
+    profile_ids = verification_tasks.select(:profile_id)
+    res_ids = VerificationTask.where(block_type: "Reference", profile_id: profile_ids).select(:survey_response_id)
+    answers = Answer.where(survey_response_id: res_ids, question_id: qids).pluck(:details)
+    {
+      "1" => answers.select{|s| s.include?('1')}.count,
+      "2" => answers.select{|s| s.include?('2')}.count,
+      "3" => answers.select{|s| s.include?('3')}.count,
+      "4" => answers.select{|s| s.include?('4')}.count,
+      "5" => answers.select{|s| s.include?('5')}.count,
+    }
+  end
+
+  def candidate_decision_making
+    a = "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Decision making"
+    qids = Question.where(content: a).select(:id)
+    profile_ids = verification_tasks.select(:profile_id)
+    res_ids = VerificationTask.where(block_type: "Reference", profile_id: profile_ids).select(:survey_response_id)
+    answers = Answer.where(survey_response_id: res_ids, question_id: qids).pluck(:details)
+    {
+      "1" => answers.select{|s| s.include?('1')}.count,
+      "2" => answers.select{|s| s.include?('2')}.count,
+      "3" => answers.select{|s| s.include?('3')}.count,
+      "4" => answers.select{|s| s.include?('4')}.count,
+      "5" => answers.select{|s| s.include?('5')}.count,
+    }
+  end
+
+  def candidate_team_work
+    a = "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Team-work"
     qids = Question.where(content: a).select(:id)
     profile_ids = verification_tasks.select(:profile_id)
     res_ids = VerificationTask.where(block_type: "Reference", profile_id: profile_ids).select(:survey_response_id)
