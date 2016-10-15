@@ -1,0 +1,2 @@
+class Qualification < Block
+end

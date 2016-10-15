@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: prognosis
+  pool: 26
+  host: localhost
+  username: baldor
+  password: baldor123
