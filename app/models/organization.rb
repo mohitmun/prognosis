@@ -3,7 +3,47 @@ class Organization < ActiveRecord::Base
   def verification_tasks
     VerificationTask.where("mapped_organization_id = #{id} OR mapped_institute_id = #{id}")
   end
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Ability to work independently",
 
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Commitment",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Attitude",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Commitment to a goal",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Decision making",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Team-work",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Respect and Humility",
+
+# "Rate the candidate on a scale of 1 to 5 on: Team Work (1 being the lowest and 5 being the highest)",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Leadership",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Capability to work independently",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Working under pressure",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Discipline",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Initiative on tasks",
+
+# "Rate the candidate on a scale of 1 to 5 on: Respect and Humility (1 being the lowest and 5 being the highest)",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Integrity",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Respect and humility",
+
+# "How would you rate your overall experience with IDfy on a scale of 1 to 5? (1:lowest, 5:highest)",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Organisation and Planning",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Professionalism",
+
+# "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Decision making and initiative",
+
+# "Rate the candidate on a scale of 1 to 5 on: Integrity (1 being the lowest and 5 being the highest)",
   def cap_to_work_indep
     a = "Rate the candidate on a scale of 1 to 5 on the following attributes. (1 being the lowest and 5 being the highest): Capability to work independently"
     qids = Question.where(content: a).select(:id)
