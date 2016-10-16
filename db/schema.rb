@@ -18,8 +18,7 @@ ActiveRecord::Schema.define(version: 20161016044022) do
   enable_extension "hstore"
   enable_extension "uuid-ossp"
 
-  create_table "answers", id: false, force: true do |t|
-    t.integer  "id",                 null: false
+  create_table "answers", force: true do |t|
     t.text     "details"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -27,6 +26,9 @@ ActiveRecord::Schema.define(version: 20161016044022) do
     t.integer  "survey_response_id"
     t.boolean  "qa"
   end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+  add_index "answers", ["survey_response_id"], name: "index_answers_on_survey_response_id", using: :btree
 
   create_table "blocks", force: true do |t|
     t.integer  "profile_id"
@@ -204,8 +206,7 @@ ActiveRecord::Schema.define(version: 20161016044022) do
     t.json     "ratings"
   end
 
-  create_table "questions", id: false, force: true do |t|
-    t.integer  "id",                   null: false
+  create_table "questions", force: true do |t|
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -220,6 +221,9 @@ ActiveRecord::Schema.define(version: 20161016044022) do
     t.boolean  "is_template"
     t.string   "ft_key"
   end
+
+  add_index "questions", ["survey_id"], name: "index_questions_on_survey_id", using: :btree
+  add_index "questions", ["template_question_id"], name: "index_questions_on_template_question_id", using: :btree
 
   create_table "verification_task_payments", force: true do |t|
     t.string   "mode"
