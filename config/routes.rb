@@ -12,6 +12,7 @@ Prognosis::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
   get 'profiles/upload_resume' => 'profiles#upload_resume'
   post 'profiles/resume_parser' => 'profiles#resume_parser'
+  post 'profiles/create' => 'profiles#create'
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 

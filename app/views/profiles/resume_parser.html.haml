@@ -1,0 +1,9 @@
+=form_tag(profiles_create_path) do 
+  -@resume_hash.each do |key,value|
+    = label_tag key.titleize
+    %br
+      -value.each do |val|
+        -val.each do |k,v| 
+          - v.gsub!("\n", "")
+          = text_field_tag k.downcase , v
+  = submit_tag "Submit"
