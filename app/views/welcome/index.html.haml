@@ -1,16 +1,43 @@
-.row
+.row{style: "margin-top: 50px;"}
   .col-md-6
-    Leadership <input id="" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
+    .col-md-4
+      Commitment 
+    .col-md-8
+      <input id="commitment" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
   .col-md-6
-    Leadership <input id="ex2" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
-.row{style: "ver"}
+    .col-md-4
+      Decision making 
+    .col-md-8
+      <input id="dec_making" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
+.row{style: "margin-top: 50px"}
   .col-md-6
-    Leadership <input id="ex2" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
+    .col-md-4
+      Team-work 
+    .col-md-8
+      <input id="team_work" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
   .col-md-6
-    Leadership <input id="ex2" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
-.row
-  .col-md-offset-6.col-md-6
-    Leadership <input id="ex2" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
+    .col-md-4
+      Capability to work independently 
+    .col-md-8
+      <input id="cap_to_work_independent" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
+- profiles = [1,2,3,4,5,6,7]
+- index = -1
+- (profiles.count/3.0).ceil.times do |i|
+  .row{style: "margin-top: 75px"}
+    - 4.times do |index1|
+      - if index < profiles.count - 1
+        .col-md-3{style: "padding: 5px;" }
+          .card
+            .card-block
+              %h4.card-title= profiles[index = index + 1]
+              %h6.card-subtitle.text-muted Support card subtitle
+            %img{:alt => "Card image", :src => "http://www.komarketingassociates.com/images/2014/08/linkedin-default.png", style: "width: 150px;margin: 0 auto; display: block"}/
+            .card-block
+              %p.card-text Some quick example text to
+              %a.card-link{:href => "#"} Open
 
 %script
-  $("#ex2").slider({});
+  $("#commitment").slider({});
+  $("#dec_making").slider({});
+  $("#team_work").slider({});
+  $("#cap_to_work_independent").slider({});
