@@ -20,22 +20,25 @@
       Capability to work independently 
     .col-md-8
       <input id="cap_to_work_independent" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
-- profiles = [1,2,3,4,5,6,7]
+- profiles = Profile.all
 - index = -1
 #profiles
   - (profiles.count/3.0).ceil.times do |i|
     .row{style: "margin-top: 75px"}
       - 4.times do |index1|
         - if index < profiles.count - 1
+          - profile = profiles[index = index + 1]
           .col-md-3{style: "padding: 5px;" }
             .card
               .card-block
-                %h4.card-title= profiles[index = index + 1]
-                %h6.card-subtitle.text-muted Support card subtitle
+                %h4.card-title= profile.name
+                - if profile.qualification
+                  %h6.card-subtitle.text-muted
+                    = profile.qualification
               %img{:alt => "Card image", :src => "http://www.komarketingassociates.com/images/2014/08/linkedin-default.png", style: "width: 150px;margin: 0 auto; display: block"}/
               .card-block
                 %p.card-text Some quick example text to
-                %a.card-link{:href => "#"} Open
+                %a.card-link{:href => "profiles/#{profile.id}", target: "_blank"} Open
 
 %script
   refreshPage = function(){
