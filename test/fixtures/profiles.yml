@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start_date: MyText
+  end_date: MyText
+  qualification: MyText
+  education: MyText
+  skills: MyText
+
+two:
+  start_date: MyText
+  end_date: MyText
+  qualification: MyText
+  education: MyText
+  skills: MyText
