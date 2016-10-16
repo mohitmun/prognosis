@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 1.2'
 
 #pdf reader gem
 gem 'yomu', '~> 0.2.4'
-
+gem 'gon'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

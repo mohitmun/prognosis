@@ -3,24 +3,24 @@
     .col-md-4
       Commitment 
     .col-md-8
-      <input id="commitment" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
+      %input#commitment.span2{"data-slider-max" => "5", "data-slider-min" => "1", "data-slider-step" => "1", "data-slider-value" => "[#{@hash['commitment1']}, #{@hash['commitment2']}]", :type => "text", :value => ""}
   .col-md-6
     .col-md-4
       Decision making 
     .col-md-8
-      <input id="dec_making" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
+      %input#dec_making.span2{"data-slider-max" => "5", "data-slider-min" => "1", "data-slider-step" => "1", "data-slider-value" => "[#{@hash['dec_making1']}, #{@hash['dec_making2']}]", :type => "text", :value => ""}
 .row{style: "margin-top: 50px"}
   .col-md-6
     .col-md-4
       Team-work 
     .col-md-8
-      <input id="team_work" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
+      %input#team_work.span2{"data-slider-max" => "5", "data-slider-min" => "1", "data-slider-step" => "1", "data-slider-value" => "[#{@hash['team_work1']}, #{@hash['team_work2']}]", :type => "text", :value => ""}
   .col-md-6
     .col-md-4
       Capability to work independently 
     .col-md-8
-      <input id="cap_to_work_independent" type="text" class="span2" value="" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="[3,4]"/> 
-- profiles = Profile.all
+      %input#cap_to_work_independent.span2{"data-slider-max" => "5", "data-slider-min" => "1", "data-slider-step" => "1", "data-slider-value" => "[#{@hash['cap_to_work_independent1']}, #{@hash['cap_to_work_independent2']}]", :type => "text", :value => ""}
+- profiles = @profiles
 - index = -1
 #profiles
   - (profiles.count/3.0).ceil.times do |i|
@@ -46,7 +46,7 @@
   dec_making_value = dec_making_slider.getValue();
   team_work_value = team_work_slider.getValue();
   cap_to_work_independent_value = cap_to_work_independent_slider.getValue();
-  window.location.href = "profiles?" + "commitment_value=" + commitment_value + "&dec_making_value=" + dec_making_value + "&team_work_value=" + team_work_value + "&cap_to_work_independent_value=" + cap_to_work_independent_value
+  window.location.href = "profiles?" + "commitment=" + commitment_value + "&dec_making=" + dec_making_value + "&team_work=" + team_work_value + "&cap_to_work_independent=" + cap_to_work_independent_value
   }
   commitment_slider = $("#commitment").slider({}).on(
   'slideStop', refreshPage).data('slider');
