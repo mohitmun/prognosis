@@ -3,4 +3,9 @@ class WelcomeController < ApplicationController
   # For APIs, you may want to use :null_session instead.
   def index
   end
+
+  def profiles
+    raise params.inspect
+  end
+
 end
